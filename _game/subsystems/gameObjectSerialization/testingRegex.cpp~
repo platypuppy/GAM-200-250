@@ -1,0 +1,25 @@
+#include <iostream>
+#include <regex>
+#include <string>
+
+
+
+
+int main (void) {
+  std::string str = "border: asfdgsdfljhgfs;";
+
+  std::regex regexp("[ \t\n]*([^:]+): (.*);");
+  
+  std::smatch matches;
+  
+  if(std::regex_search(str, matches, regexp)) {
+    std::cout << "match" << std::endl;
+
+    for (size_t i = 0; i < matches.size(); ++i)
+      std::cout << i << " : " << matches[i].str() << std::endl;
+  } else {
+    std::cout << "no match";
+  }
+    
+  return 0;
+}
