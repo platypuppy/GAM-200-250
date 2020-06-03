@@ -1,0 +1,7 @@
+#include <iostream>
+
+int main (void) {
+  std::cout << "-------------" << std::endl;
+  std::cout << "yay code work" << std::endl;
+  std::cout << "-------------" << std::endl;
+}
