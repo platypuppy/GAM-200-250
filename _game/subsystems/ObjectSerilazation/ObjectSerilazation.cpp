@@ -6,6 +6,8 @@
 #include "rapidjson/error/en.h"
 #include "rapidjson/error/error.h"
 
+static void printObject(const rapidjson::Value& obj, int indent);
+
 static const char* kTypeNames[] = {
   "Null",
   "False",
@@ -26,6 +28,74 @@ static void JSONError(rapidjson::ParseResult ok) {
               << std::endl;  
 }
 
+std::string operator * (const std::string& string, int times) {
+  std::string out;
+  for (int i = 0; i < times*3; i++)
+    out += string;
+
+  return out;
+}
+
+static void printArray(const rapidjson::Value& array, int indent) {
+  for (rapidjson::SizeType i = 0; i < array.Size(); i++) {
+    if (array[i].IsNumber())
+      std::cout << "Number"; // array[i].GetInt()
+    else if (array[i].IsString())
+      std::cout << array[i].GetString();
+    else if (array[i].IsBool())
+      std::cout << array[i].GetBool();
+    else if (array[i].IsObject())
+      printObject(array[i], indent);
+    else if (array[i].IsArray())
+      printArray(array[i], indent);
+      
+    std::cout << ", ";
+  }
+}
+
+static void printMember(const std::string& name, const rapidjson::Value& mem, int indent = 0) {
+  std::cout << std::string(" ") * indent
+            << "Type of |"
+            << name
+            << "| is "
+            << kTypeNames[mem.GetType()]
+            << ", = ";
+
+  if (mem.IsString())
+    std::cout << mem.GetString();
+  else if (mem.IsBool())
+    std::cout << mem.GetBool();
+  else if (mem.IsArray())
+    printArray(mem, indent);
+  else if (mem.IsObject())
+    printObject(mem, indent);
+  else if (mem.IsNumber()) {
+    std::cout << "Number"; //mem.GetInt();
+  }
+  
+  std::cout << std::endl;
+}
+
+static void printObject(const rapidjson::Value& obj, int indent) {
+  /*std::string indentWidth;
+  for (unsigned char i = 0; i < indent*3; i++)
+  indentWidth.push_back(' ');*/
+  std::cout << std::endl;
+  for (auto it = obj.MemberBegin(); it != obj.MemberEnd(); ++it) {
+    //std::cout << indentWidth;
+    printMember(it->name.GetString(), it->value, indent + 1);
+  }
+}
+
+static void printDoc(rapidjson::Document& doc) {
+  for (auto& m : doc.GetObject()) {
+    printMember(m.name.GetString(), m.value);
+  /*for (auto& it : doc.GetObject())
+    printObject(*it);*/
+  }
+}
+
+
 int main (void) {
   //std::cout << "-------------" << std::endl;
   //std::cout << "yay code work" << std::endl;
@@ -36,8 +106,11 @@ int main (void) {
   rapidjson::Document document;
   JSONError(document.ParseStream(jsonStream));
 
-  for (auto it = document.MemberBegin(); it != document.MemberEnd(); ++it)
-    std::cout << kTypeNames[it->value.GetType()] << std::endl;
+  printDoc(document);
+      //std::cout << "yay an object" << std::endl;
+      
+  
+  //printDoc(document);
 
   //std::cout << "-------------" << std::endl;
 }

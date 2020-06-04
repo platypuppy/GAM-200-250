@@ -5,6 +5,14 @@
     "dsfg": 14,
     "an object?": {
         "part1": 14,
-        "another": "test"
+        "another": "test",
+        "recursive object": {
+            "things inside": 213,
+            "more thigns": "adsfgsdfg"
+        }
+    },
+    "another object?": {
+        "heyt look its an object!": [ 123, 123, 123, 123 ],
+        "an array": ["string", 45]
     }
 }

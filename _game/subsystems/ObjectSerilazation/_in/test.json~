@@ -1,1 +1,17 @@
-testing this should not commpile
+{
+    "name": "test file",
+    "tag": "other string",
+    "afds": 23.6,
+    "dsfg": 14,
+    "an object?": {
+        "part1": 14,
+        "another": "test",
+        "recursive object": {
+            "things inside": 213,
+            "more thigns": "adsfgsdfg"
+        }
+    },
+    "another object?": {
+        "heyt look its an object!": [ 123, 123, 123, 123 ]
+    }
+}
