@@ -126,3 +126,14 @@ int main (void) {
 
   printDoc(document);
 }
+
+
+
+//================================================================
+/*
+TODO:
+- figure out type to object
+- make objects to can be created
+- make arrays into vectors
+- make things added to objects
+*/
