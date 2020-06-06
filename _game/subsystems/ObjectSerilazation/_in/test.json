@@ -13,6 +13,8 @@
     },
     "another object?": {
         "heyt look its an object!": [ 123, 123, 123, 123 ],
-        "an array": ["string", 45.231]
+        "an array": ["string", 45.231],
+        "bool": true,
+        "Bool": false
     }
 }

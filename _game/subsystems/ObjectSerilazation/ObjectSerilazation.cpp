@@ -10,7 +10,7 @@ static void printMember(const std::string& name, const rapidjson::Value& mem, in
 static void printArray(const rapidjson::Value& array, int indent);
 static void printObject(const rapidjson::Value& obj, int indent);
 
-static const char* kTypeNames[] = {
+/*static const char* kTypeNames[] = {
   "Null",
   "False",
   "True",
@@ -18,6 +18,11 @@ static const char* kTypeNames[] = {
   "Array",
   "String",
   "Number"
+  };*/
+
+static const char* BoolConvert[] = {
+  "false",
+  "true"
 };
 
 static void JSONError(rapidjson::ParseResult ok) {
@@ -32,7 +37,7 @@ static void JSONError(rapidjson::ParseResult ok) {
 
 std::string operator * (const std::string& string, int times) {
   std::string out;
-  for (int i = 0; i < times * 3; i++)
+  for (int i = 0; i < times * 2; i++)
     out += string;
 
   return out;
@@ -43,7 +48,7 @@ static void printValue(const rapidjson::Value& val, int indent) {
     case rapidjson::Type::kNullType:
       break;
     case rapidjson::Type::kFalseType:
-      std::cout << val.GetBool();
+      std::cout << BoolConvert[val.GetBool()];
       break;
     case rapidjson::Type::kTrueType:
       std::cout << val.GetBool();
@@ -55,7 +60,7 @@ static void printValue(const rapidjson::Value& val, int indent) {
       printArray(val, indent);
       break;
     case rapidjson::Type::kStringType:
-      std::cout << val.GetString();
+      std::cout << "\"" << val.GetString() << "\"";
       break;
     case rapidjson::Type::kNumberType:
       if (val.IsInt())
@@ -71,35 +76,42 @@ static void printValue(const rapidjson::Value& val, int indent) {
 }
 
 static void printArray(const rapidjson::Value& array, int indent) {
+  std::cout << "[ ";
   for (rapidjson::SizeType i = 0; i < array.Size(); i++) {
     printValue(array[i], indent);
-    std::cout << ", ";
+    if (i < array.Size()-1)
+      std::cout << ", ";
   }
+  std::cout << " ]";
 }
 
 static void printMember(const std::string& name, const rapidjson::Value& mem, int indent) {
   std::cout << std::string(" ") * indent
-            << "Type of |"
+            << "\""
             << name
-            << "| is "
-            << kTypeNames[mem.GetType()]
-            << ", = ";
+            << "\": ";
+  //          << kTypeNames[mem.GetType()]
+  //          << ", = ";
   printValue(mem, indent);
   
   std::cout << std::endl;
 }
 
 static void printObject(const rapidjson::Value& obj, int indent) {
-  std::cout << std::endl;
+  std::cout << "{"<< std::endl;
   for (auto it = obj.MemberBegin(); it != obj.MemberEnd(); ++it) {
     printMember(it->name.GetString(), it->value, indent + 1);
   }
+  std::cout << std::string(" ") * indent
+            << "}";
 }
 
 static void printDoc(rapidjson::Document& doc) {
+  std::cout << "{" << std::endl;
   for (auto& m : doc.GetObject()) {
-    printMember(m.name.GetString(), m.value);
+    printMember(m.name.GetString(), m.value, 1);
   }
+  std::cout << std::endl << "}" << std::endl;
 }
 
 
