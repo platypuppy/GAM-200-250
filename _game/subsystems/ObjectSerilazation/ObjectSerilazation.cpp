@@ -6,6 +6,8 @@
 #include "rapidjson/error/en.h"
 #include "rapidjson/error/error.h"
 
+static void printMember(const std::string& name, const rapidjson::Value& mem, int indent = 0);
+static void printArray(const rapidjson::Value& array, int indent);
 static void printObject(const rapidjson::Value& obj, int indent);
 
 static const char* kTypeNames[] = {
@@ -36,63 +38,60 @@ std::string operator * (const std::string& string, int times) {
   return out;
 }
 
+static void printValue(const rapidjson::Value& val, int indent) {
+  switch (val.GetType()) {
+    case rapidjson::Type::kNullType:
+      break;
+    case rapidjson::Type::kFalseType:
+      std::cout << val.GetBool();
+      break;
+    case rapidjson::Type::kTrueType:
+      std::cout << val.GetBool();
+      break;
+    case rapidjson::Type::kObjectType:
+      printObject(val, indent);
+      break;
+    case rapidjson::Type::kArrayType:
+      printArray(val, indent);
+      break;
+    case rapidjson::Type::kStringType:
+      std::cout << val.GetString();
+      break;
+    case rapidjson::Type::kNumberType:
+      if (val.IsInt())
+        std::cout << val.GetInt();
+      else if (val.IsDouble())
+        std::cout << val.GetDouble();
+      else
+        std::cout << "!int || !double";    
+      break;
+    default:
+      break;
+  }
+}
+
 static void printArray(const rapidjson::Value& array, int indent) {
   for (rapidjson::SizeType i = 0; i < array.Size(); i++) {
-    if (array[i].IsNumber()) {
-      if (array[i].IsInt())
-        std::cout << array[i].GetInt();
-      else if (array[i].IsDouble())
-        std::cout << array[i].GetDouble();
-      else
-        std::cout << "!int || !double";
-    } else if (array[i].IsString())
-      std::cout << array[i].GetString();
-    else if (array[i].IsBool())
-      std::cout << array[i].GetBool();
-    else if (array[i].IsObject())
-      printObject(array[i], indent);
-    else if (array[i].IsArray())
-      printArray(array[i], indent);
-      
+    printValue(array[i], indent);
     std::cout << ", ";
   }
 }
 
-static void printMember(const std::string& name, const rapidjson::Value& mem, int indent = 0) {
+static void printMember(const std::string& name, const rapidjson::Value& mem, int indent) {
   std::cout << std::string(" ") * indent
             << "Type of |"
             << name
             << "| is "
             << kTypeNames[mem.GetType()]
             << ", = ";
-
-  if (mem.IsString())
-    std::cout << mem.GetString();
-  else if (mem.IsBool())
-    std::cout << mem.GetBool();
-  else if (mem.IsArray())
-    printArray(mem, indent);
-  else if (mem.IsObject())
-    printObject(mem, indent);
-  else if (mem.IsNumber()) {
-    if (mem.IsInt())
-      std::cout << mem.GetInt();
-    else if (mem.IsDouble())
-      std::cout << mem.GetDouble();
-    else
-      std::cout << "!int || !double";    
-  }
+  printValue(mem, indent);
   
   std::cout << std::endl;
 }
 
 static void printObject(const rapidjson::Value& obj, int indent) {
-  /*std::string indentWidth;
-  for (unsigned char i = 0; i < indent*3; i++)
-  indentWidth.push_back(' ');*/
   std::cout << std::endl;
   for (auto it = obj.MemberBegin(); it != obj.MemberEnd(); ++it) {
-    //std::cout << indentWidth;
     printMember(it->name.GetString(), it->value, indent + 1);
   }
 }
@@ -100,16 +99,11 @@ static void printObject(const rapidjson::Value& obj, int indent) {
 static void printDoc(rapidjson::Document& doc) {
   for (auto& m : doc.GetObject()) {
     printMember(m.name.GetString(), m.value);
-  /*for (auto& it : doc.GetObject())
-    printObject(*it);*/
   }
 }
 
 
 int main (void) {
-  //std::cout << "-------------" << std::endl;
-  //std::cout << "yay code work" << std::endl;
-  
   std::ifstream jsonFile("_in/test.json");
   rapidjson::IStreamWrapper jsonStream(jsonFile);
   
@@ -117,10 +111,4 @@ int main (void) {
   JSONError(document.ParseStream(jsonStream));
 
   printDoc(document);
-      //std::cout << "yay an object" << std::endl;
-      
-  
-  //printDoc(document);
-
-  //std::cout << "-------------" << std::endl;
 }
