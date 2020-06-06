@@ -1,16 +1,16 @@
 Type of |name| is String, = test file
 Type of |tag| is String, = other string
-Type of |afds| is Number, = Number
-Type of |dsfg| is Number, = Number
+Type of |afds| is Number, = 23.6
+Type of |dsfg| is Number, = 14
 Type of |an object?| is Object, = 
-   Type of |part1| is Number, = Number
+   Type of |part1| is Number, = 14
    Type of |another| is String, = test
    Type of |recursive object| is Object, = 
-      Type of |things inside| is Number, = Number
+      Type of |things inside| is Number, = 213
       Type of |more thigns| is String, = adsfgsdfg
 
 
 Type of |another object?| is Object, = 
-   Type of |heyt look its an object!| is Array, = Number, Number, Number, Number, 
-   Type of |an array| is Array, = string, Number, 
+   Type of |heyt look its an object!| is Array, = 123, 123, 123, 123, 
+   Type of |an array| is Array, = string, 45.231, 
 

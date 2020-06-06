@@ -30,7 +30,7 @@ static void JSONError(rapidjson::ParseResult ok) {
 
 std::string operator * (const std::string& string, int times) {
   std::string out;
-  for (int i = 0; i < times*3; i++)
+  for (int i = 0; i < times * 3; i++)
     out += string;
 
   return out;
@@ -38,9 +38,14 @@ std::string operator * (const std::string& string, int times) {
 
 static void printArray(const rapidjson::Value& array, int indent) {
   for (rapidjson::SizeType i = 0; i < array.Size(); i++) {
-    if (array[i].IsNumber())
-      std::cout << "Number"; // array[i].GetInt()
-    else if (array[i].IsString())
+    if (array[i].IsNumber()) {
+      if (array[i].IsInt())
+        std::cout << array[i].GetInt();
+      else if (array[i].IsDouble())
+        std::cout << array[i].GetDouble();
+      else
+        std::cout << "!int || !double";
+    } else if (array[i].IsString())
       std::cout << array[i].GetString();
     else if (array[i].IsBool())
       std::cout << array[i].GetBool();
@@ -70,7 +75,12 @@ static void printMember(const std::string& name, const rapidjson::Value& mem, in
   else if (mem.IsObject())
     printObject(mem, indent);
   else if (mem.IsNumber()) {
-    std::cout << "Number"; //mem.GetInt();
+    if (mem.IsInt())
+      std::cout << mem.GetInt();
+    else if (mem.IsDouble())
+      std::cout << mem.GetDouble();
+    else
+      std::cout << "!int || !double";    
   }
   
   std::cout << std::endl;
