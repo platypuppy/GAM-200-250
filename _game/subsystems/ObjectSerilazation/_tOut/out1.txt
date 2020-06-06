@@ -1,21 +1,22 @@
 {
-  "name": "test file"
-  "tag": "other string"
-  "afds": 23.6
-  "dsfg": 14
-  "an object?": {
-    "part1": 14
-    "another": "test"
+  "name": "test file",
+  "tag": "other string",
+  "afds": 23.6,
+  "dsfg": 14,
+  "an object": {
+    "type": "Player",
+    "part1": 14,
+    "another": "test",
     "recursive object": {
-      "things inside": 213
-      "more thigns": "adsfgsdfg"
-    }
-  }
+      "things inside": 213,
+      "more thigns": "adsfgsdfg",
+    },
+  },
   "another object?": {
-    "heyt look its an object!": [ 123, 123, 123, 123 ]
-    "an array": [ "string", 45.231 ]
-    "bool": 1
-    "Bool": false
-  }
+    "heyt look its an object!": [ 123, 123, 123, 123 ],
+    "an array": [ "string", 45.231 ],
+    "bool": 1,
+    "Bool": false,
+  },
 
 }

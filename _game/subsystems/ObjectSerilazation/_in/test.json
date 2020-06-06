@@ -3,7 +3,8 @@
     "tag": "other string",
     "afds": 23.6,
     "dsfg": 14,
-    "an object?": {
+    "an object": {
+        "type": "Player",
         "part1": 14,
         "another": "test",
         "recursive object": {

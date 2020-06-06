@@ -94,6 +94,8 @@ static void printMember(const std::string& name, const rapidjson::Value& mem, in
   //          << ", = ";
   printValue(mem, indent);
   
+  std::cout << ",";
+  
   std::cout << std::endl;
 }
 
