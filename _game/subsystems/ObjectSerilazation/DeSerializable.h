@@ -1,0 +1,17 @@
+#include <any>
+#include <string>
+#include <iostream>
+
+class DeSerializable {
+  public:
+    DeSerializable() {};
+    virtual ~DeSerializable() {};
+  
+    virtual bool AddComponent(const std::string& key, std::any& anything) {
+      anything.type();
+      std::cout << key;
+      return false;
+    }
+
+  static DeSerializable* NewObject();
+};

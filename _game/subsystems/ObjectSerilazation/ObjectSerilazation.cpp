@@ -5,6 +5,10 @@
 #include <fstream>
 #include "rapidjson/error/en.h"
 #include "rapidjson/error/error.h"
+#include <vector>
+
+//#include "DeSerializable.cpp"
+#include "DSObject.cpp"
 
 static void printMember(const std::string& name, const rapidjson::Value& mem, int indent = 0);
 static void printArray(const rapidjson::Value& array, int indent);
@@ -24,6 +28,8 @@ static const char* BoolConvert[] = {
   "false",
   "true"
 };
+
+static std::vector<DeSerializable*> objs;
 
 static void JSONError(rapidjson::ParseResult ok) {
   if (!ok)
@@ -100,6 +106,7 @@ static void printMember(const std::string& name, const rapidjson::Value& mem, in
 }
 
 static void printObject(const rapidjson::Value& obj, int indent) {
+  objs.push_back(DSObject::NewObject());
   std::cout << "{"<< std::endl;
   for (auto it = obj.MemberBegin(); it != obj.MemberEnd(); ++it) {
     printMember(it->name.GetString(), it->value, indent + 1);
@@ -109,6 +116,7 @@ static void printObject(const rapidjson::Value& obj, int indent) {
 }
 
 static void printDoc(rapidjson::Document& doc) {
+  objs.push_back(DSObject::NewObject());
   std::cout << "{" << std::endl;
   for (auto& m : doc.GetObject()) {
     printMember(m.name.GetString(), m.value, 1);
@@ -125,6 +133,13 @@ int main (void) {
   JSONError(document.ParseStream(jsonStream));
 
   printDoc(document);
+
+  
+  std::cout << "delete?" << std::endl;
+  for (long long int i = objs.size()-1; i >= 0; i--) {
+    std::cout << "would delete: " << objs[i] << std::endl;
+    delete objs[i];
+  }
 }
 
 
@@ -132,8 +147,8 @@ int main (void) {
 //================================================================
 /*
 TODO:
-- figure out type to object
-- make objects to can be created
+/ figure out type to object
+/ make objects to can be created
 - make arrays into vectors
 - make things added to objects
 */

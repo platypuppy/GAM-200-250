@@ -4,7 +4,7 @@ OS=LINUX
 #=========================
 # compiler info
 CC=g++
-CFLAGS= -g -O2 -Wconversion -Wall -Wextra -Werror -ansi -pedantic
+CFLAGS= -g -O2 -Wconversion -Wall -Wextra -Werror -ansi -pedantic -std=c++17
 # 
 LFLAGS=
 VALGRIND=-q --leak-check=full --show-reachable=yes --tool=memcheck --trace-children=yes
