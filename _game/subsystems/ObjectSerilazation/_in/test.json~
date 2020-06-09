@@ -3,7 +3,8 @@
     "tag": "other string",
     "afds": 23.6,
     "dsfg": 14,
-    "an object?": {
+    "an object": {
+        "type": "Player",
         "part1": 14,
         "another": "test",
         "recursive object": {
@@ -13,6 +14,8 @@
     },
     "another object?": {
         "heyt look its an object!": [ 123, 123, 123, 123 ],
-        "an array": ["string", 45]
+        "an array": ["string", 45.231],
+        "bool": true,
+        "Bool": false
     }
 }

@@ -7,9 +7,10 @@ class DeSerializable {
     DeSerializable() {};
     virtual ~DeSerializable() {};
   
-    virtual bool AddComponent(const std::string& key, std::any& anything) {
+    virtual bool AddComponent(const std::string& key, const std::any& anything) {
       anything.type();
-      std::cout << key;
+      if (key == "rfewsfdgfgsd")
+        return false;
       return false;
     }
 

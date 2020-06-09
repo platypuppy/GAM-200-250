@@ -13,7 +13,5 @@ class DeSerializable {
       return false;
     }
 
-    static DeSerializable* NewObject() {
-      return NULL;
-    }
+  static DeSerializable* NewObject();
 };

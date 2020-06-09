@@ -10,12 +10,12 @@ LFLAGS=
 VALGRIND=-q --leak-check=full --show-reachable=yes --tool=memcheck --trace-children=yes
 #=========================
 # files
-CODE_IN=ObjectSerilazation
+CODE_IN=DeSerializable
 EXTENSION=.cpp
 #DRIVER=driver-int
-DRIVER=driver
+DRIVER=ObjectSerilazation
 # extra files
-EXTRA1=PRNG
+EXTRA1=DSObject
 # in macro
 # < $(IN)in-$*.txt
 # $*
@@ -36,8 +36,8 @@ IN=_in/
 #NUM_OFF=1
 #NUM_TESTS=10
 
-OBJS=$(OUTDIR)$(CODE_IN).o
-#OBJS=$(OUTDIR)$(DRIVER).o $(OUTDIR)$(CODE_IN).o $(OUTDIR)$(EXTRA1).o
+#OBJS=$(OUTDIR)$(CODE_IN).o
+OBJS=$(OUTDIR)$(DRIVER).o $(OUTDIR)$(CODE_IN).o $(OUTDIR)$(EXTRA1).o
 # 
 
 DUMP1=

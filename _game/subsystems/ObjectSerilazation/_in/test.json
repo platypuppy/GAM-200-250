@@ -17,5 +17,7 @@
         "an array": ["string", 45.231],
         "bool": true,
         "Bool": false
-    }
+    },
+    "flot": 12.5,
+    "number": 14
 }

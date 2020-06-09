@@ -1,3 +1,4 @@
+parsed _in/test.json
 {
   "name": "test file",
   "tag": "other string",
@@ -18,10 +19,12 @@
     "bool": 1,
     "Bool": false,
   },
+  "flot": 12.5,
+  "number": 14,
 
 }
 delete?
-would delete: 0x4dca8b0
-would delete: 0x4dca800
-would delete: 0x4dca700
-would delete: 0x4dc9620
+would delete: 0x4dcab20
+would delete: 0x4dcaa00
+would delete: 0x4dca830
+would delete: 0x4dca6c0

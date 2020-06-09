@@ -1,0 +1,12 @@
+#include <iostream>
+#include "rapidjson/document.h"
+#include "rapidjson/istreamwrapper.h"
+#include <string>
+#include <fstream>
+#include "rapidjson/error/en.h"
+#include "rapidjson/error/error.h"
+#include <vector>
+
+//#include "DeSerializable.h"
+#include "DSObject.cpp"
+

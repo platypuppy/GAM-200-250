@@ -16,6 +16,7 @@ EXTENSION=.cpp
 DRIVER=ObjectSerilazation
 # extra files
 EXTRA1=DSObject
+EXTRA2=ObjectDeSerilazation
 # in macro
 # < $(IN)in-$*.txt
 # $*
@@ -37,7 +38,7 @@ IN=_in/
 #NUM_TESTS=10
 
 #OBJS=$(OUTDIR)$(CODE_IN).o
-OBJS=$(OUTDIR)$(DRIVER).o $(OUTDIR)$(CODE_IN).o $(OUTDIR)$(EXTRA1).o
+OBJS=$(OUTDIR)$(DRIVER).o $(OUTDIR)$(CODE_IN).o $(OUTDIR)$(EXTRA1).o $(OUTDIR)$(EXTRA2).o
 # 
 
 DUMP1=
