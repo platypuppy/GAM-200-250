@@ -39,7 +39,7 @@ namespace ObjectSerializer {
       if (name == "object")
         std::cout << "its an object!";
       
-      DeSerializable* object = DSObject::NewObject();
+      DeSerializable* object = DSObject::NewObject(/*ewhaty every srtibng theoigadfng;df*/);
       objects->push_back(object);
 
       obj->AddComponent("child", std::make_any<DeSerializable*>(object));
@@ -175,10 +175,9 @@ namespace ObjectSerializer {
   
   std::vector<DeSerializable*>* DeSerialize(const char* filepath) {
     std::ifstream jsonFile(filepath);
-    rapidjson::IStreamWrapper jsonStream(jsonFile);
 
     rapidjson::Document document;
-    JSONError(document.ParseStream(jsonStream), filepath);
+    JSONError(document.Parse(jsonFile), filepath);
 
     std::cout << "parsed "<< filepath << std::endl;
 
