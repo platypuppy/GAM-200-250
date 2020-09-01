@@ -10,17 +10,6 @@
 //#include "DeSerializable.h"
 #include "DSObject.h"
 
-  /*********************************************************************/
-  /*
-   Function: 
-Description: 
-     Inputs: 
-    Outputs: 
-   */
-  /*********************************************************************/
-
-
-
 // Object DeSerializer Functions
 namespace ObjectSerializer {
   //prototypes
@@ -37,11 +26,14 @@ Description: Prints out json error if there is an error
    */
   /*********************************************************************/
   static void JSONError(rapidjson::ParseResult ok, const char * path) {
+    // check if an error occurred
     if (!ok)
+      // if an error occurred then print out formatted error message
       std::cerr << path
                 << ":"
                 << ok.Offset()
                 << ": "
+                // retrive error message from rapidjson
                 << rapidjson::GetParseError_En(ok.Code())
                 << std::endl;
   }
@@ -57,6 +49,7 @@ Description: Prints out a formatted error
    */
   /*********************************************************************/
   static void JSONMemberError(const char *path, const std::string& key, const char *errorString) {
+    // print out a formatted error message 
     std::cerr << path
               << ":\""
               << key
@@ -78,18 +71,24 @@ Description: create a new object with the contents stored in |value|
    */
   /*********************************************************************/
   static DeSerializable* createObject(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value) {
+    // print out a  message if the name of the object is "object"
     if (name == "object")
       std::cout << "its an object!";
-    
-    DeSerializable* object = DSObject::NewObject(/*ewhaty every srtibng theoigadfng;df*/);
+
+    // create a new object with nothing inside of it
+    DeSerializable* object = DSObject::NewObject();
+    // add the object to the end of the vector
     objects->push_back(object);
-    
+
+    // add the new object as a child to the current object
     obj->AddComponent("child", std::make_any<DeSerializable*>(object));
+    // add the current object as the parent to the new object
     object->AddComponent("parent", std::make_any<DeSerializable*>(obj));
-    
-    for (auto it = value.MemberBegin(); it != value.MemberEnd(); ++it) {
+
+    // loop through all of the members of the object and add the members
+    for (auto it = value.MemberBegin(); it != value.MemberEnd(); ++it)
       createMember(path, objects, object, it->name.GetString(), it->value);
-    }
+    
     return object;
   }
 
@@ -107,39 +106,47 @@ Description: creates the member and adds the value to the object
    */
   /*********************************************************************/
   static void addValue(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value) {
+    // switch on the type of |value|
     switch (value.GetType()) {
-    case rapidjson::Type::kNullType:
-      JSONMemberError(path, name, " warning: |kNullType| will not be read");
-      break;
-    case rapidjson::Type::kFalseType:
-    case rapidjson::Type::kTrueType:
-      if (!obj->AddComponent(name, std::make_any<bool>(value.GetBool())))
-        JSONMemberError(path, name, " error: unsupported key");
-      break;
-    case rapidjson::Type::kObjectType:
-      createObject(path, objects, obj, name, value);
-      break;
-    case rapidjson::Type::kArrayType:
-      if (!obj->AddComponent(name, std::make_any<std::vector<std::any>*>(makeArray(path, objects, obj, name, value))))
-        JSONMemberError(path, name, " error: unsupported key");
-      break;
-    case rapidjson::Type::kStringType:
-      if (!obj->AddComponent(name, std::make_any<std::string>(value.GetString())))
-        JSONMemberError(path, name, " error: unsupported key");
-      break;
-    case rapidjson::Type::kNumberType:
-      if (value.IsInt()) {
-        if (!obj->AddComponent(name, std::make_any<int>(value.GetInt())))
+      // NULL types will not be read
+      case rapidjson::Type::kNullType:
+        JSONMemberError(path, name, " warning: |kNullType| will not be read");
+        break;
+      // Add Boolean Types
+      case rapidjson::Type::kFalseType:
+      case rapidjson::Type::kTrueType:
+        if (!obj->AddComponent(name, std::make_any<bool>(value.GetBool())))
           JSONMemberError(path, name, " error: unsupported key");
-      } else if (value.IsDouble()) {
-        if (!obj->AddComponent(name, std::make_any<double>(value.GetDouble())))
+        break;
+      // create object and that will add itself as a child to the current object
+      case rapidjson::Type::kObjectType:
+        createObject(path, objects, obj, name, value);
+        break;
+      // 
+      case rapidjson::Type::kArrayType:
+        if (!obj->AddComponent(name, std::make_any<std::vector<std::any>*>(makeArray(path, objects, obj, name, value))))
           JSONMemberError(path, name, " error: unsupported key");
-      } else
-        JSONMemberError(path, name, " error: unsupported number type");
-      break;
-    default:
-      JSONMemberError(path, name, " error: unsupported type");
-      break;
+        break;
+      // 
+      case rapidjson::Type::kStringType:
+        if (!obj->AddComponent(name, std::make_any<std::string>(value.GetString())))
+          JSONMemberError(path, name, " error: unsupported key");
+        break;
+      // 
+      case rapidjson::Type::kNumberType:
+        if (value.IsInt()) {
+          if (!obj->AddComponent(name, std::make_any<int>(value.GetInt())))
+            JSONMemberError(path, name, " error: unsupported key");
+        } else if (value.IsDouble()) {
+          if (!obj->AddComponent(name, std::make_any<double>(value.GetDouble())))
+            JSONMemberError(path, name, " error: unsupported key");
+        } else
+          JSONMemberError(path, name, " error: unsupported number type");
+        break;
+      // 
+      default:
+        JSONMemberError(path, name, " error: unsupported type");
+        break;
     }
   }
 
