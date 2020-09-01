@@ -10,13 +10,32 @@
 //#include "DeSerializable.h"
 #include "DSObject.h"
 
+  /*********************************************************************/
+  /*
+   Function: 
+Description: 
+     Inputs: 
+    Outputs: 
+   */
+  /*********************************************************************/
+
+
+
 // Object DeSerializer Functions
 namespace ObjectSerializer {
-  //
+  //prototypes
   static void createMember(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& member);
   static std::vector<std::any>* makeArray(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value);
   
-  
+  /*********************************************************************/
+  /*
+   Function: JSONError
+Description: Prints out json error if there is an error
+     Inputs: ok   - the result of parsing the json file
+             path - the path to the file that was parsed
+    Outputs: N/A
+   */
+  /*********************************************************************/
   static void JSONError(rapidjson::ParseResult ok, const char * path) {
     if (!ok)
       std::cerr << path
@@ -27,7 +46,16 @@ namespace ObjectSerializer {
                 << std::endl;
   }
 
-  //JSONMemberError(path, "test", "test error");
+  /*********************************************************************/
+  /*
+   Function: JSONMemberError
+Description: Prints out a formatted error
+     Inputs: path        - path to the file that the error occured in
+             key         - the name of the member with an error
+             errorString - desccription of the error
+    Outputs: N/A
+   */
+  /*********************************************************************/
   static void JSONMemberError(const char *path, const std::string& key, const char *errorString) {
     std::cerr << path
               << ":\""
@@ -37,23 +65,47 @@ namespace ObjectSerializer {
               << std::endl;
   }
 
-    static DeSerializable* createObject(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value) {
-      if (name == "object")
-        std::cout << "its an object!";
-      
-      DeSerializable* object = DSObject::NewObject(/*ewhaty every srtibng theoigadfng;df*/);
-      objects->push_back(object);
-
-      obj->AddComponent("child", std::make_any<DeSerializable*>(object));
-      object->AddComponent("parent", std::make_any<DeSerializable*>(obj));
-      
-      for (auto it = value.MemberBegin(); it != value.MemberEnd(); ++it) {
-        createMember(path, objects, object, it->name.GetString(), it->value);
-      }
-      return object;
+  /*********************************************************************/
+  /*
+   Function: createObject
+Description: create a new object with the contents stored in |value|
+     Inputs: path    - path to the file that the object is currently in
+             objects - vector containing all the objects created
+             obj     - the object we are currently using
+             name    - name of hte object
+             value   - the contents of the object
+    Outputs: a pointer to the object that was just created
+   */
+  /*********************************************************************/
+  static DeSerializable* createObject(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value) {
+    if (name == "object")
+      std::cout << "its an object!";
+    
+    DeSerializable* object = DSObject::NewObject(/*ewhaty every srtibng theoigadfng;df*/);
+    objects->push_back(object);
+    
+    obj->AddComponent("child", std::make_any<DeSerializable*>(object));
+    object->AddComponent("parent", std::make_any<DeSerializable*>(obj));
+    
+    for (auto it = value.MemberBegin(); it != value.MemberEnd(); ++it) {
+      createMember(path, objects, object, it->name.GetString(), it->value);
     }
+    return object;
+  }
 
   
+  /*********************************************************************/
+  /*
+   Function: addValue
+Description: creates the member and adds the value to the object
+     Inputs: path    - path to the file that the object is currently in
+             objects - vector containing all the objects created
+             obj     - the object to add the value to
+             name    - the name of the member
+             value   - the contents of the member
+    Outputs: N/A
+   */
+  /*********************************************************************/
   static void addValue(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value) {
     switch (value.GetType()) {
     case rapidjson::Type::kNullType:
@@ -91,6 +143,18 @@ namespace ObjectSerializer {
     }
   }
 
+  /*********************************************************************/
+  /*
+   Function: makeArray
+Description: create and return an array
+     Inputs: path    - path to the file we are parsing
+             objects - vector with all th objects created
+             obj     - the current object that we are appending to
+             name    - name of the array
+             value   - the contents of the array
+    Outputs: vector of members
+   */
+  /*********************************************************************/
   static std::vector<std::any>* makeArray(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value) {
 
     std::vector<std::any>* array = new std::vector<std::any>;
@@ -159,10 +223,31 @@ namespace ObjectSerializer {
   }
 
   
+  /*********************************************************************/
+  /*
+   Function: createMember
+Description: Create a new member of the object and add it
+     Inputs: path    - path to the file that we are parsing
+             objects - the vector of all objects created
+             obj     - the current object to add the member to
+             name    - name of the member to add
+             member  - the contents of the member
+    Outputs: N/A
+   */
+  /*********************************************************************/
   static void createMember(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& member) {
     addValue(path, objects, obj, name, member);
   }
   
+  /*********************************************************************/
+  /*
+   Function: createDocumentObjects
+Description: create a vector with all of the objects within of the file
+     Inputs: path     - file that we are looking through
+             document - the object holding all of the objects
+    Outputs: the vector of all the objects in the file
+   */
+  /*********************************************************************/
   static std::vector<DeSerializable*>* createDocumentObjects(const char *path, rapidjson::Document& document) {
     std::vector<DeSerializable*>* objects = new std::vector<DeSerializable*>;
 
@@ -175,11 +260,20 @@ namespace ObjectSerializer {
     return objects;
   }
   
+  /*********************************************************************/
+  /*
+   Function: DeSerialize
+Description: parse a file and return a vector of the contained gameobjects
+     Inputs: filepath - path to the file to parse 
+    Outputs: pointer to a vector of objects that were parsed
+   */
+  /*********************************************************************/
   std::vector<DeSerializable*>* DeSerialize(const char* filepath) {
     std::ifstream jsonFile(filepath);
-
+    rapidjson::IStreamWrapper jsonStream(jsonFile);
+    
     rapidjson::Document document;
-    JSONError(document.Parse(jsonFile), filepath);
+    JSONError(document.ParseStream(jsonStream), filepath);
 
     std::cout << "parsed "<< filepath << std::endl;
 
