@@ -10,10 +10,12 @@
 //#include "DeSerializable.h"
 #include "DSObject.h"
 
+// Object DeSerializer Functions
 namespace ObjectSerializer {
+  //
   static void createMember(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& member);
   static std::vector<std::any>* makeArray(const char *path, std::vector<DeSerializable*>* objects, DeSerializable* obj, const std::string& name, const rapidjson::Value& value);
-
+  
   
   static void JSONError(rapidjson::ParseResult ok, const char * path) {
     if (!ok)
