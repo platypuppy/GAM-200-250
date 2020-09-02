@@ -362,3 +362,7 @@ Description: parse a file and return a vector of the contained gameobjects
     return createDocumentObjects(filepath, document);
   }
 }
+
+// TODO
+// - arrays within arrays that store different types from eachother are not caught
+// - unit tests
