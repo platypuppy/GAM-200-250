@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/DeSerializable.h
+any
+-
+string
+-
+iostream
+-
+
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/ObjectDeSerilazation.h
+string
+-
+vector
+-
+DeSerializable.h
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/DeSerializable.h
+
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/UnitTestDriver-1.cpp
+iostream
+-
+string
+-
+fstream
+-
+vector
+-
+gtest/gtest.h
+-
+ObjectDeSerilazation.h
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/ObjectDeSerilazation.h
+

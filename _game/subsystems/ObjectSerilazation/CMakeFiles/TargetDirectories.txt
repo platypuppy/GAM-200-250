@@ -1,0 +1,3 @@
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles/rebuild_cache.dir
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles/executeTests.dir
+/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles/edit_cache.dir
