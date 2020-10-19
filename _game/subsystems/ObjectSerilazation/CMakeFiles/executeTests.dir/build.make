@@ -57,42 +57,94 @@ include CMakeFiles/executeTests.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/executeTests.dir/flags.make
 
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o: CMakeFiles/executeTests.dir/flags.make
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o: UnitTestDriver-1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o -c /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/UnitTestDriver-1.cpp
+CMakeFiles/executeTests.dir/_unit_test.cpp.o: CMakeFiles/executeTests.dir/flags.make
+CMakeFiles/executeTests.dir/_unit_test.cpp.o: _unit_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/executeTests.dir/_unit_test.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/executeTests.dir/_unit_test.cpp.o -c /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/_unit_test.cpp
 
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/UnitTestDriver-1.cpp > CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.i
+CMakeFiles/executeTests.dir/_unit_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/executeTests.dir/_unit_test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/_unit_test.cpp > CMakeFiles/executeTests.dir/_unit_test.cpp.i
 
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/UnitTestDriver-1.cpp -o CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.s
+CMakeFiles/executeTests.dir/_unit_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/executeTests.dir/_unit_test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/_unit_test.cpp -o CMakeFiles/executeTests.dir/_unit_test.cpp.s
 
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.requires:
+CMakeFiles/executeTests.dir/_unit_test.cpp.o.requires:
 
-.PHONY : CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.requires
+.PHONY : CMakeFiles/executeTests.dir/_unit_test.cpp.o.requires
 
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.provides: CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.requires
-	$(MAKE) -f CMakeFiles/executeTests.dir/build.make CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.provides.build
-.PHONY : CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.provides
+CMakeFiles/executeTests.dir/_unit_test.cpp.o.provides: CMakeFiles/executeTests.dir/_unit_test.cpp.o.requires
+	$(MAKE) -f CMakeFiles/executeTests.dir/build.make CMakeFiles/executeTests.dir/_unit_test.cpp.o.provides.build
+.PHONY : CMakeFiles/executeTests.dir/_unit_test.cpp.o.provides
 
-CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.provides.build: CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o
+CMakeFiles/executeTests.dir/_unit_test.cpp.o.provides.build: CMakeFiles/executeTests.dir/_unit_test.cpp.o
+
+
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o: CMakeFiles/executeTests.dir/flags.make
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o: ObjectDeSerialization_private.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o -c /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/ObjectDeSerialization_private.cpp
+
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/ObjectDeSerialization_private.cpp > CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.i
+
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/ObjectDeSerialization_private.cpp -o CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.s
+
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.requires:
+
+.PHONY : CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.requires
+
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.provides: CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.requires
+	$(MAKE) -f CMakeFiles/executeTests.dir/build.make CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.provides.build
+.PHONY : CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.provides
+
+CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.provides.build: CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o
+
+
+CMakeFiles/executeTests.dir/DSObject.cpp.o: CMakeFiles/executeTests.dir/flags.make
+CMakeFiles/executeTests.dir/DSObject.cpp.o: DSObject.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/executeTests.dir/DSObject.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/executeTests.dir/DSObject.cpp.o -c /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/DSObject.cpp
+
+CMakeFiles/executeTests.dir/DSObject.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/executeTests.dir/DSObject.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/DSObject.cpp > CMakeFiles/executeTests.dir/DSObject.cpp.i
+
+CMakeFiles/executeTests.dir/DSObject.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/executeTests.dir/DSObject.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/DSObject.cpp -o CMakeFiles/executeTests.dir/DSObject.cpp.s
+
+CMakeFiles/executeTests.dir/DSObject.cpp.o.requires:
+
+.PHONY : CMakeFiles/executeTests.dir/DSObject.cpp.o.requires
+
+CMakeFiles/executeTests.dir/DSObject.cpp.o.provides: CMakeFiles/executeTests.dir/DSObject.cpp.o.requires
+	$(MAKE) -f CMakeFiles/executeTests.dir/build.make CMakeFiles/executeTests.dir/DSObject.cpp.o.provides.build
+.PHONY : CMakeFiles/executeTests.dir/DSObject.cpp.o.provides
+
+CMakeFiles/executeTests.dir/DSObject.cpp.o.provides.build: CMakeFiles/executeTests.dir/DSObject.cpp.o
 
 
 # Object files for target executeTests
 executeTests_OBJECTS = \
-"CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o"
+"CMakeFiles/executeTests.dir/_unit_test.cpp.o" \
+"CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o" \
+"CMakeFiles/executeTests.dir/DSObject.cpp.o"
 
 # External object files for target executeTests
 executeTests_EXTERNAL_OBJECTS =
 
-executeTests: CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o
+executeTests: CMakeFiles/executeTests.dir/_unit_test.cpp.o
+executeTests: CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o
+executeTests: CMakeFiles/executeTests.dir/DSObject.cpp.o
 executeTests: CMakeFiles/executeTests.dir/build.make
 executeTests: /usr/lib/libgtest.a
 executeTests: CMakeFiles/executeTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable executeTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/platypuppy/GitHub/GAM-200-250/_game/subsystems/ObjectSerilazation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable executeTests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/executeTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,7 +152,9 @@ CMakeFiles/executeTests.dir/build: executeTests
 
 .PHONY : CMakeFiles/executeTests.dir/build
 
-CMakeFiles/executeTests.dir/requires: CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o.requires
+CMakeFiles/executeTests.dir/requires: CMakeFiles/executeTests.dir/_unit_test.cpp.o.requires
+CMakeFiles/executeTests.dir/requires: CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o.requires
+CMakeFiles/executeTests.dir/requires: CMakeFiles/executeTests.dir/DSObject.cpp.o.requires
 
 .PHONY : CMakeFiles/executeTests.dir/requires
 

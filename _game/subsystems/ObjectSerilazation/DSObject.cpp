@@ -15,7 +15,3 @@ bool DSObject::AddComponent(const std::string& key, const std::any& anything) {
   //std::cout << "Key \"" << key << "\" does not exist" << std::endl;
   return false;
 }
-
-DeSerializable* DSObject::NewObject() {
-  return new DSObject();
-}

@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/executeTests.dir/UnitTestDriver-1.cpp.o"
+  "CMakeFiles/executeTests.dir/_unit_test.cpp.o"
+  "CMakeFiles/executeTests.dir/ObjectDeSerialization_private.cpp.o"
+  "CMakeFiles/executeTests.dir/DSObject.cpp.o"
   "executeTests.pdb"
   "executeTests"
 )

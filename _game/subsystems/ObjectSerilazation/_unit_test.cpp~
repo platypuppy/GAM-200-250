@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+
+#include <gtest/gtest.h>
+#include "rapidjson/document.h"
+
+//#include "DeSerializable.cpp"
+//#include "DSObject.h"
+
+#include "ObjectDeSerialization_private.h"
+//#include "ObjectDeSerilazation.h"
+
+
+int* returnNULL () {
+  return NULL;
+}
+
+namespace Test {
+  TEST(MakingSureTestsWork, sucess) {
+    EXPECT_EQ(NULL, NULL);
+  }
+  /*  TEST(MakingSureTestsWork, failure) {
+    EXPECT_EQ(NULL, true);
+    }*/
+
+
+  TEST(ParsingJSON, createObjectValid) {
+    
+  }
+  
+  TEST(ParsingJSON, createObject) {
+    rapidjson::Value val;
+    val.SetInt(10);
+    std::string str("no");
+    Kiwi::ObjectSerializer::createObject(NULL, NULL, NULL, str, val);
+    //EXPECT_EQ(NULL, Kiwi::ObjectSerializer::createObject(NULL, NULL, NULL, std::string("no"), val));
+    //EXPECT_EQ(NULL, returnNULL());
+    EXPECT_EQ(12, 12);
+  }
+}
+  
+int main (int argc, char **argv) {
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+  
+  /*  std::vector<DeSerializable*>* objects = ObjectSerializer::DeSerialize("_in/test.json");
+      
+      std::cout << "delete?" << std::endl;
+      for (long long int i = objects->size()-1; i >= 0; i--) {
+      std::cout << "would delete: " << (*objects)[i] << std::endl;
+      delete (*objects)[i];
+      }
+      delete objects;*/
+}
